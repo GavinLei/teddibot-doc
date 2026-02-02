@@ -1,299 +1,343 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>桂林阳朔5天4晚行程</title>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #f7f8fa;
-  color: #333;
-  line-height: 1.5;
-  padding: 12px;
-}
-.container {
-  max-width: 768px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-h1 {
-  font-size: 20px;
-  text-align: center;
-  color: #222;
-  margin-bottom: 8px;
-}
-.subtitle {
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-}
-.tip-box {
-  background: #fff9e6;
-  border-left: 4px solid #ffb03b;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  font-size: 13px;
-}
-.tip-box h3 {
-  font-size: 15px;
-  color: #d48806;
-  margin-bottom: 6px;
-}
-.tip-box p {
-  margin-bottom: 4px;
-}
-.day-card {
-  border: 1px solid #eee;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  overflow: hidden;
-}
-.day-header {
-  background-color: #359dff;
-  color: #fff;
-  padding: 10px 14px;
-  font-size: 16px;
-  font-weight: 500;
-}
-.item {
-  padding: 12px 14px;
-  border-bottom: 1px solid #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.item:last-child {
-  border-bottom: none;
-}
-.time {
-  font-size: 14px;
-  font-weight: 500;
-  color: #359dff;
-}
-.content {
-  font-size: 15px;
-  color: #222;
-}
-.remark {
-  font-size: 12px;
-  color: #666;
-  padding-top: 2px;
-}
-.action-bar {
-  text-align: center;
-  margin-top: 20px;
-}
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #359dff;
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
-}
-@media print {
-  body {
-    background: #fff;
-    padding: 0;
-  }
-  .container {
-    box-shadow: none;
-    border-radius: 0;
-  }
-  .btn {
-    display: none;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林阳朔5日旅游计划</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            padding: 15px;
+            line-height: 1.6;
+        }
+        .plan-container {
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .plan-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .plan-header h1 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .day-card {
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #0088cc;
+        }
+        .day-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .weather-tag {
+            font-size: 14px;
+            font-weight: normal;
+            color: white;
+            background-color: #0088cc;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .schedule-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+        .schedule-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+        }
+        .time-label {
+            min-width: 80px;
+            font-weight: bold;
+            color: #0088cc;
+            margin-right: 10px;
+        }
+        .content-label {
+            flex: 1;
+            color: #666;
+        }
+        .accommodation {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+        .accommodation strong {
+            color: #333;
+        }
+        /* 适配小屏手机 */
+        @media (max-width: 375px) {
+            .day-title {
+                font-size: 16px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .weather-tag {
+                margin-top: 5px;
+            }
+            .time-label {
+                min-width: 70px;
+                font-size: 14px;
+            }
+            .content-label {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <h1>桂林阳朔5天4晚旅游行程</h1>
-  <p class="subtitle">2026年2月7日–2月11日 | 成都往返</p>
+    <div class="plan-container">
+        <div class="plan-header">
+            <h1>桂林阳朔5日旅游计划（2026年2月7日-11日）</h1>
+            <p>适配手机端浏览 | 含详细时间+天气+行程</p>
+        </div>
 
-  <div class="tip-box">
-    <h3>重要提醒</h3>
-    <p>• 漓江三星游轮、遇龙河漂流、千古情、两江四湖需提前1–3天预约</p>
-    <p>• 酒店尽快确认，优先选择景区/交通枢纽附近</p>
-    <p>• 全程携带身份证，儿童备好户口本/出生证明</p>
-  </div>
+        <!-- 2月7日行程 -->
+        <div class="day-card">
+            <div class="day-title">
+                2月7日 周六（成都→桂林）
+                <span class="weather-tag">成都：多云 10℃；桂林：阴 15℃</span>
+            </div>
+            <ul class="schedule-list">
+                <li class="schedule-item">
+                    <span class="time-label">14:00</span>
+                    <span class="content-label">从住处出发前往成都天府机场T2</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">14:30</span>
+                    <span class="content-label">办理登机手续+安检</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">16:00</span>
+                    <span class="content-label">乘坐GT1016航班起飞</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">17:35</span>
+                    <span class="content-label">抵达桂林两江机场T2</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">18:00</span>
+                    <span class="content-label">机场打车前往酒店（约40分钟）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">18:40</span>
+                    <span class="content-label">办理入住</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">19:00</span>
+                    <span class="content-label">酒店周边晚餐，熟悉环境</span>
+                </li>
+            </ul>
+            <div class="accommodation">
+                <strong>住宿：</strong>桂林古镇江璟酒店(漓江景区大圩古镇店)
+            </div>
+        </div>
 
-  <!-- 2月7日 周六 -->
-  <div class="day-card">
-    <div class="day-header">2月7日 周六｜成都→桂林 入住桂林</div>
-    <div class="item">
-      <div class="time">12:00–15:30</div>
-      <div class="content">成都天府机场T2 值机、候机</div>
-      <div class="remark">建议提前2小时到机场，核对行李额度</div>
-    </div>
-    <div class="item">
-      <div class="time">16:00–17:35</div>
-      <div class="content">航班 GT1016 成都→桂林</div>
-      <div class="remark">天府T2 → 两江T2，飞行约1小时35分</div>
-    </div>
-    <div class="item">
-      <div class="time">17:35–19:00</div>
-      <div class="content">机场取行李 → 前往桂林市区酒店</div>
-      <div class="remark">机场大巴约1小时 / 网约车约40分钟</div>
-    </div>
-    <div class="item">
-      <div class="time">19:00–20:30</div>
-      <div class="content">办理入住 + 市区晚餐</div>
-      <div class="remark">推荐桂林米粉、啤酒鱼，酒店选两江四湖/东西巷附近</div>
-    </div>
-    <div class="item">
-      <div class="time">20:30–21:30</div>
-      <div class="content">自由活动：东西巷 / 逍遥楼闲逛</div>
-      <div class="remark">确认次日漓江游轮登船信息</div>
-    </div>
-  </div>
+        <!-- 2月8日行程 -->
+        <div class="day-card">
+            <div class="day-title">
+                2月8日 周日（桂林→阳朔）
+                <span class="weather-tag">桂林：小雨 14℃；阳朔：小雨 15℃</span>
+            </div>
+            <ul class="schedule-list">
+                <li class="schedule-item">
+                    <span class="time-label">07:30</span>
+                    <span class="content-label">酒店早餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">08:30</span>
+                    <span class="content-label">前往漓江码头（车程约1小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">09:30</span>
+                    <span class="content-label">乘坐漓江3星邮轮游漓江（约4小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">13:30</span>
+                    <span class="content-label">邮轮上午餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">14:00</span>
+                    <span class="content-label">抵达阳朔码头，前往酒店办理入住（车程约20分钟）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">14:30</span>
+                    <span class="content-label">酒店休息/自由活动</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">18:00</span>
+                    <span class="content-label">阳朔西街晚餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">19:30</span>
+                    <span class="content-label">前往观看桂林千古情表演（约1.5小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">21:30</span>
+                    <span class="content-label">返回酒店休息</span>
+                </li>
+            </ul>
+            <div class="accommodation">
+                <strong>住宿：</strong>山眸溪舍·画廊艺术美宿(阳朔西街店)
+            </div>
+        </div>
 
-  <!-- 2月8日 周日 -->
-  <div class="day-card">
-    <div class="day-header">2月8日 周日｜桂林→阳朔 入住阳朔</div>
-    <div class="item">
-      <div class="time">07:00–08:00</div>
-      <div class="content">酒店早餐 → 前往磨盘山码头</div>
-      <div class="remark">市区到码头约1小时，务必8:30前抵达</div>
-    </div>
-    <div class="item">
-      <div class="time">08:30–14:30</div>
-      <div class="content">漓江三星游轮（磨盘山→阳朔码头）</div>
-      <div class="remark">航程约5小时，含简餐，观赏九马画山、黄布倒影等</div>
-    </div>
-    <div class="item">
-      <div class="time">14:30–15:30</div>
-      <div class="content">阳朔码头 → 千古情景区 → 办理酒店入住</div>
-      <div class="remark">打车约15分钟，可先寄存行李</div>
-    </div>
-    <div class="item">
-      <div class="time">15:30–16:00</div>
-      <div class="content">千古情景区入园、园区体验</div>
-      <div class="remark">可体验民俗表演、互动项目</div>
-    </div>
-    <div class="item">
-      <div class="time">19:30–20:30</div>
-      <div class="content">桂林千古情演出</div>
-      <div class="remark">演出时长约1小时，建议提前选座</div>
-    </div>
-    <div class="item">
-      <div class="time">20:30–22:00</div>
-      <div class="content">阳朔西街闲逛 + 晚餐</div>
-      <div class="remark">品尝当地小吃，注意财物安全</div>
-    </div>
-  </div>
+        <!-- 2月9日行程 -->
+        <div class="day-card">
+            <div class="day-title">
+                2月9日 周一（阳朔→兴坪）
+                <span class="weather-tag">阳朔：多云 16℃；兴坪：晴 17℃</span>
+            </div>
+            <ul class="schedule-list">
+                <li class="schedule-item">
+                    <span class="time-label">08:00</span>
+                    <span class="content-label">酒店早餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">09:00</span>
+                    <span class="content-label">前往遇龙河漂流起点（车程约30分钟）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">09:30</span>
+                    <span class="content-label">遇龙河竹筏漂流（约2小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">12:00</span>
+                    <span class="content-label">漂流终点附近午餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">13:00</span>
+                    <span class="content-label">前往兴坪古镇（车程约1小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">14:00</span>
+                    <span class="content-label">办理酒店入住</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">14:30</span>
+                    <span class="content-label">游览兴坪古镇核心区域</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">18:00</span>
+                    <span class="content-label">古镇内晚餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">19:00</span>
+                    <span class="content-label">自由活动/休息</span>
+                </li>
+            </ul>
+            <div class="accommodation">
+                <strong>住宿：</strong>千峰里酒店(兴坪古镇20元背景风景区店)
+            </div>
+        </div>
 
-  <!-- 2月9日 周一 -->
-  <div class="day-card">
-    <div class="day-header">2月9日 周一｜阳朔→兴坪 入住兴坪</div>
-    <div class="item">
-      <div class="time">08:00–09:00</div>
-      <div class="content">酒店早餐 → 遇龙河漂流起点</div>
-      <div class="remark">推荐金龙桥–旧县段，打车约20分钟</div>
-    </div>
-    <div class="item">
-      <div class="time">09:00–11:30</div>
-      <div class="content">遇龙河竹筏漂流</div>
-      <div class="remark">提前1–2天预约，2人一筏，儿童/老人需符合要求</div>
-    </div>
-    <div class="item">
-      <div class="time">11:30–13:00</div>
-      <div class="content">旧县村午餐 + 休整</div>
-      <div class="remark">推荐农家菜、田螺酿</div>
-    </div>
-    <div class="item">
-      <div class="time">13:00–14:00</div>
-      <div class="content">阳朔县城 → 兴坪古镇</div>
-      <div class="remark">打车约40分钟 / 班车约1小时</div>
-    </div>
-    <div class="item">
-      <div class="time">14:00–15:00</div>
-      <div class="content">办理兴坪古镇酒店入住</div>
-      <div class="remark">优先选古镇内或漓江畔住宿</div>
-    </div>
-    <div class="item">
-      <div class="time">15:00–20:00</div>
-      <div class="content">兴坪古镇游览 + 晚餐 + 夜景休闲</div>
-      <div class="remark">打卡20元人民币背景观景台、老寨山</div>
-    </div>
-  </div>
+        <!-- 2月10日行程 -->
+        <div class="day-card">
+            <div class="day-title">
+                2月10日 周二（兴坪→桂林）
+                <span class="weather-tag">兴坪：晴 18℃；桂林：多云 16℃</span>
+            </div>
+            <ul class="schedule-list">
+                <li class="schedule-item">
+                    <span class="time-label">08:00</span>
+                    <span class="content-label">酒店早餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">08:30</span>
+                    <span class="content-label">游览兴坪古镇周边20元人民币背景等景点（约3小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">12:00</span>
+                    <span class="content-label">兴坪古镇特色午餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">13:30</span>
+                    <span class="content-label">前往兴坪古镇汽车站</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">14:00</span>
+                    <span class="content-label">乘坐汽车返回桂林（车程约1.5小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">15:30</span>
+                    <span class="content-label">抵达桂林，办理酒店入住</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">16:00</span>
+                    <span class="content-label">自由活动（可逛两江四湖周边）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">18:00</span>
+                    <span class="content-label">酒店附近晚餐</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">19:00</span>
+                    <span class="content-label">休息，整理行李</span>
+                </li>
+            </ul>
+            <div class="accommodation">
+                <strong>住宿：</strong>桂林漓江云端酒店(桂林两江四湖象鼻山店)
+            </div>
+        </div>
 
-  <!-- 2月10日 周二 -->
-  <div class="day-card">
-    <div class="day-header">2月10日 周二｜兴坪→桂林 入住桂林</div>
-    <div class="item">
-      <div class="time">08:00–09:00</div>
-      <div class="content">酒店早餐 → 深度逛兴坪古镇</div>
-      <div class="remark">逛老街、关帝庙，感受本地氛围</div>
+        <!-- 2月11日行程 -->
+        <div class="day-card">
+            <div class="day-title">
+                2月11日 周三（桂林→成都）
+                <span class="weather-tag">桂林：阴 14℃；成都：多云 11℃</span>
+            </div>
+            <ul class="schedule-list">
+                <li class="schedule-item">
+                    <span class="time-label">04:30</span>
+                    <span class="content-label">起床整理</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">05:00</span>
+                    <span class="content-label">酒店出发前往桂林两江机场T2（车程约1小时）</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">06:00</span>
+                    <span class="content-label">办理登机手续+安检</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">07:05</span>
+                    <span class="content-label">乘坐GT1093航班起飞</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">08:50</span>
+                    <span class="content-label">抵达成都天府机场T2</span>
+                </li>
+                <li class="schedule-item">
+                    <span class="time-label">09:30</span>
+                    <span class="content-label">机场返程，结束行程</span>
+                </li>
+            </ul>
+            <div class="accommodation">
+                <strong>住宿：</strong>无（返程）
+            </div>
+        </div>
     </div>
-    <div class="item">
-      <div class="time">09:00–10:30</div>
-      <div class="content">兴坪 → 阳朔 → 桂林</div>
-      <div class="remark">班车/包车返程，约1.5–2小时</div>
-    </div>
-    <div class="item">
-      <div class="time">10:30–12:00</div>
-      <div class="content">办理桂林酒店入住 + 休整</div>
-      <div class="remark">酒店选两江四湖附近，方便夜游</div>
-    </div>
-    <div class="item">
-      <div class="time">12:00–13:30</div>
-      <div class="content">市区午餐</div>
-      <div class="remark">推荐椿记烧鹅、阿甘酒家</div>
-    </div>
-    <div class="item">
-      <div class="time">13:30–18:00</div>
-      <div class="content">自由活动：象鼻山 / 靖江王城（二选一）</div>
-      <div class="remark">轻松游览，避免行程过赶</div>
-    </div>
-    <div class="item">
-      <div class="time">19:00–21:00</div>
-      <div class="content">两江四湖夜游游船</div>
-      <div class="remark">游船约1.5小时，提前1天预约</div>
-    </div>
-  </div>
-
-  <!-- 2月11日 周三 -->
-  <div class="day-card">
-    <div class="day-header">2月11日 周三｜桂林→成都 返程</div>
-    <div class="item">
-      <div class="time">08:00–09:00</div>
-      <div class="content">酒店早餐 → 退房</div>
-      <div class="remark">整理行李，核对返程航班信息</div>
-    </div>
-    <div class="item">
-      <div class="time">09:00–10:00</div>
-      <div class="content">桂林市区 → 两江国际机场</div>
-      <div class="remark">网约车约40分钟 / 机场大巴约1小时</div>
-    </div>
-    <div class="item">
-      <div class="time">10:00–起飞</div>
-      <div class="content">机场值机、候机</div>
-      <div class="remark">国内航班建议提前2小时抵达机场</div>
-    </div>
-    <div class="item">
-      <div class="time">起飞后</div>
-      <div class="content">桂林→成都，行程结束</div>
-      <div class="remark">抵达成都后取行李，返程回家</div>
-    </div>
-  </div>
-
-  <div class="action-bar">
-    <a href="javascript:window.print()" class="btn">打印/保存行程</a>
-  </div>
-</div>
 </body>
 </html>
