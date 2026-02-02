@@ -2,342 +2,230 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>桂林阳朔5日旅游计划</title>
+    <!-- 手机端核心适配：视口自适应、禁止缩放，保证浏览体验 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>桂林阳朔五日详细旅游计划（2.7-2.11）</title>
     <style>
+        /* 全局重置+基础样式：低饱和中国风，手机友好 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
+            font-family: "微软雅黑", "宋体", "苹方", sans-serif;
         }
         body {
-            background-color: #f5f5f5;
-            padding: 15px;
-            line-height: 1.6;
+            background-color: #f9f7f4; /* 月白底色，柔和中国风 */
+            color: #333333; /* 墨灰文字，不刺眼 */
+            padding: 12px;
+            line-height: 1.9;
+            font-size: 16px; /* 手机舒适阅读字号 */
         }
-        .plan-container {
-            max-width: 100%;
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .plan-header {
+        /* 顶部航旅提示栏：茶褐主色，醒目不突兀 */
+        .tip-top {
+            background-color: #8c6d31;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 18px;
             text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 15px;
         }
-        .plan-header h1 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 8px;
+        /* 主标题：黛青主色，茶褐下划线，居中对称 */
+        h1 {
+            text-align: center;
+            color: #2f4f4f; /* 黛青色 */
+            margin-bottom: 25px;
+            font-size: 22px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #8c6d31; /* 茶褐色边框 */
+            font-weight: bold;
         }
+        /* 每日行程卡片：圆角+轻阴影，月白背景，黛青左侧边栏 */
         .day-card {
-            background-color: #fafafa;
+            background-color: #fff;
             border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid #0088cc;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+            border-left: 4px solid #2f4f4f; /* 黛青侧边，中国风点缀 */
         }
-        .day-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .weather-tag {
-            font-size: 14px;
-            font-weight: normal;
-            color: white;
-            background-color: #0088cc;
-            padding: 3px 8px;
+        /* 每日头部：日期/地点/天气，墨灰背景+白字，信息集中 */
+        .day-header {
+            background-color: #333;
+            color: #fff;
+            padding: 7px 12px;
             border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 17px;
+            font-weight: 500;
         }
-        .schedule-list {
+        /* 天气标注：浅湖蓝，单独突出，不抢主色 */
+        .weather {
+            color: #60a5fa;
+            font-weight: normal;
+            margin-left: 8px;
+            font-size: 15px;
+        }
+        /* 行程列表：无默认符号，自定义茶褐小圆点，手机易读 */
+        .trip-list {
             list-style: none;
-            margin-top: 10px;
+            padding-left: 8px;
         }
-        .schedule-item {
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-            display: flex;
+        .trip-list li {
+            margin-bottom: 14px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
         }
-        .time-label {
-            min-width: 80px;
+        /* 列表前置符号：茶褐小圆点，简约中国风 */
+        .trip-list li::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            background-color: #8c6d31;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+        /* 晚间时间段：茶褐主色+加粗，重点突出 */
+        .night-time {
+            color: #8c6d31;
             font-weight: bold;
-            color: #0088cc;
-            margin-right: 10px;
         }
-        .content-label {
-            flex: 1;
+        /* 住宿信息：黛青+加粗，清晰识别 */
+        .hotel {
+            color: #2f4f4f;
+            font-weight: bold;
+        }
+        /* 航班信息：墨黑+加粗，核心交通突出 */
+        .flight {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        /* 特色美食：橘红+轻加粗，本地亮点提示 */
+        .food {
+            color: #e67700;
+            font-weight: 500;
+        }
+        /* 游玩贴士/重点：浅紫+轻加粗，实用信息突出 */
+        .tip {
+            color: #7950f2;
+            font-weight: 500;
+        }
+        /* 交通方式：深绿+轻加粗，出行细节明确 */
+        .traffic {
+            color: #218838;
+            font-weight: 500;
+        }
+        /* 底部温馨提示：浅灰，小字号，不抢视线 */
+        .footer {
+            text-align: center;
             color: #666;
-        }
-        .accommodation {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-            color: #666;
-        }
-        .accommodation strong {
-            color: #333;
-        }
-        /* 适配小屏手机 */
-        @media (max-width: 375px) {
-            .day-title {
-                font-size: 16px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .weather-tag {
-                margin-top: 5px;
-            }
-            .time-label {
-                min-width: 70px;
-                font-size: 14px;
-            }
-            .content-label {
-                font-size: 14px;
-            }
+            font-size: 13px;
+            margin-top: 25px;
+            padding-top: 12px;
+            border-top: 1px solid #dcd6cc;
+            line-height: 1.7;
         }
     </style>
 </head>
 <body>
-    <div class="plan-container">
-        <div class="plan-header">
-            <h1>桂林阳朔5日旅游计划（2026年2月7日-11日）</h1>
-            <p>适配手机端浏览 | 含详细时间+天气+行程</p>
-        </div>
+    <!-- 顶部航旅纵横查询提示，按要求置顶 -->
+    <div class="tip-top">航班信息可下载“航旅纵横”APP进行实时查询</div>
 
-        <!-- 2月7日行程 -->
-        <div class="day-card">
-            <div class="day-title">
-                2月7日 周六（成都→桂林）
-                <span class="weather-tag">成都：多云 10℃；桂林：阴 15℃</span>
-            </div>
-            <ul class="schedule-list">
-                <li class="schedule-item">
-                    <span class="time-label">14:00</span>
-                    <span class="content-label">从住处出发前往成都天府机场T2</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">14:30</span>
-                    <span class="content-label">办理登机手续+安检</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">16:00</span>
-                    <span class="content-label">乘坐GT1016航班起飞</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">17:35</span>
-                    <span class="content-label">抵达桂林两江机场T2</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">18:00</span>
-                    <span class="content-label">机场打车前往酒店（约40分钟）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">18:40</span>
-                    <span class="content-label">办理入住</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">19:00</span>
-                    <span class="content-label">酒店周边晚餐，熟悉环境</span>
-                </li>
-            </ul>
-            <div class="accommodation">
-                <strong>住宿：</strong>桂林古镇江璟酒店(漓江景区大圩古镇店)
-            </div>
-        </div>
+    <!-- 主标题，明确行程主题和时间 -->
+    <h1>桂林阳朔五日详细旅游计划（2.7-2.11）</h1>
 
-        <!-- 2月8日行程 -->
-        <div class="day-card">
-            <div class="day-title">
-                2月8日 周日（桂林→阳朔）
-                <span class="weather-tag">桂林：小雨 14℃；阳朔：小雨 15℃</span>
-            </div>
-            <ul class="schedule-list">
-                <li class="schedule-item">
-                    <span class="time-label">07:30</span>
-                    <span class="content-label">酒店早餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">08:30</span>
-                    <span class="content-label">前往漓江码头（车程约1小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">09:30</span>
-                    <span class="content-label">乘坐漓江3星邮轮游漓江（约4小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">13:30</span>
-                    <span class="content-label">邮轮上午餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">14:00</span>
-                    <span class="content-label">抵达阳朔码头，前往酒店办理入住（车程约20分钟）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">14:30</span>
-                    <span class="content-label">酒店休息/自由活动</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">18:00</span>
-                    <span class="content-label">阳朔西街晚餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">19:30</span>
-                    <span class="content-label">前往观看桂林千古情表演（约1.5小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">21:30</span>
-                    <span class="content-label">返回酒店休息</span>
-                </li>
-            </ul>
-            <div class="accommodation">
-                <strong>住宿：</strong>山眸溪舍·画廊艺术美宿(阳朔西街店)
-            </div>
-        </div>
+    <!-- 2月7日 周六 成都→桂林 | 精准细化交通/游玩/休整 -->
+    <div class="day-card">
+        <div class="day-header">2月7日 周六 | 成都 → 桂林 <span class="weather">天气：阴转小雨 10-16℃ | 体感偏凉</span></div>
+        <ul class="trip-list">
+            <li><span class="flight">16:00-17:35</span> 航班：成都天府机场T2 → 桂林两江机场T2（GT1016）<span class="tip">贴士：建议14:00前抵达机场，预留值机/安检时间</span></li>
+            <li>17:35-18:10 机场休整：取行李、前往机场出租车点<span class="traffic">交通：机场出租车/网约车，打表约50元</span></li>
+            <li>18:10-19:00 前往酒店：桂林两江机场 → 桂林古镇江璟酒店<span class="tip">贴士：车程约50分钟，雨天注意道路湿滑</span></li>
+            <li>19:00-19:30 办理入住：桂林古镇江璟酒店(漓江景区大圩古镇店)<span class="hotel">住宿：含早，江景房建议提前确认</span></li>
+            <li><span class="night-time">19:30-21:00</span> 晚间行程：逛大圩古镇夜景，打卡古镇江边步道<span class="food">美食：古镇内尝桂林米粉、艾叶粑粑，人均15-20元</span></li>
+            <li><span class="night-time">21:00后</span> 休整：返回酒店休息，为次日漓江游船蓄力<span class="tip">贴士：提前准备好次日游船的随身物品（雨具、充电宝）</span></li>
+        </ul>
+    </div>
 
-        <!-- 2月9日行程 -->
-        <div class="day-card">
-            <div class="day-title">
-                2月9日 周一（阳朔→兴坪）
-                <span class="weather-tag">阳朔：多云 16℃；兴坪：晴 17℃</span>
-            </div>
-            <ul class="schedule-list">
-                <li class="schedule-item">
-                    <span class="time-label">08:00</span>
-                    <span class="content-label">酒店早餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">09:00</span>
-                    <span class="content-label">前往遇龙河漂流起点（车程约30分钟）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">09:30</span>
-                    <span class="content-label">遇龙河竹筏漂流（约2小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">12:00</span>
-                    <span class="content-label">漂流终点附近午餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">13:00</span>
-                    <span class="content-label">前往兴坪古镇（车程约1小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">14:00</span>
-                    <span class="content-label">办理酒店入住</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">14:30</span>
-                    <span class="content-label">游览兴坪古镇核心区域</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">18:00</span>
-                    <span class="content-label">古镇内晚餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">19:00</span>
-                    <span class="content-label">自由活动/休息</span>
-                </li>
-            </ul>
-            <div class="accommodation">
-                <strong>住宿：</strong>千峰里酒店(兴坪古镇20元背景风景区店)
-            </div>
-        </div>
+    <!-- 2月8日 周日 桂林→阳朔 | 细化游船/表演/西街游玩细节 -->
+    <div class="day-card">
+        <div class="day-header">2月8日 周日 | 桂林 → 阳朔 <span class="weather">天气：阴转小雨 11-17℃ | 江面有雾，景色更佳</span></div>
+        <ul class="trip-list">
+            <li>08:00-08:30 酒店早餐：酒店自助早，可打包便携早餐</li>
+            <li>08:30-08:50 前往码头：酒店 → 磨盘山码头<span class="traffic">交通：酒店约车/滴滴，车程约20分钟，费用约30元</span></li>
+            <li>08:50-09:30 游船准备：换票、登船，选二层甲板观景位<span class="tip">贴士：漓江3星邮轮含午餐，靠窗位视野更好</span></li>
+            <li>09:30-13:30 漓江游船：磨盘山码头 → 阳朔龙头山码头<span class="tip">游玩重点：打卡九马画山、黄布倒影、20元人民币背景远景</span></li>
+            <li>13:30-14:00 抵达阳朔：龙头山码头下船，前往停车场<span class="traffic">交通：码头打车至阳朔西街，车程约10分钟，费用约15元</span></li>
+            <li>14:00-14:30 办理入住：山眸溪舍·画廊艺术美宿(阳朔西街店)<span class="hotel">住宿：西街步行5分钟，闹中取静，提前预约观景房</span></li>
+            <li>14:30-17:30 午后休整：酒店休息/逛阳朔西街周边，打卡益田西街</li>
+            <li>17:30-18:30 晚餐：阳朔西街附近尝本地菜<span class="food">美食：啤酒鱼、田螺酿、荔浦芋头扣肉，人均50-60元</span></li>
+            <li><span class="night-time">18:30-19:20</span> 前往剧场：西街 → 桂林千古情景区<span class="traffic">交通：步行/共享单车，约15分钟，景区有免费接驳车</span></li>
+            <li><span class="night-time">19:30-21:00</span> 观看表演：桂林千古情演出<span class="tip">贴士：提前10分钟入场，选中间区域观看效果最佳</span></li>
+            <li><span class="night-time">21:10-22:30</span> 逛西街：阳朔西街夜景打卡，体验西街夜市<span class="tip">贴士：西街小吃可尝桂花糕、姜糖，按需购买避免踩坑</span></li>
+            <li><span class="night-time">22:30后</span> 休整：返回酒店休息，避免熬夜</li>
+        </ul>
+    </div>
 
-        <!-- 2月10日行程 -->
-        <div class="day-card">
-            <div class="day-title">
-                2月10日 周二（兴坪→桂林）
-                <span class="weather-tag">兴坪：晴 18℃；桂林：多云 16℃</span>
-            </div>
-            <ul class="schedule-list">
-                <li class="schedule-item">
-                    <span class="time-label">08:00</span>
-                    <span class="content-label">酒店早餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">08:30</span>
-                    <span class="content-label">游览兴坪古镇周边20元人民币背景等景点（约3小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">12:00</span>
-                    <span class="content-label">兴坪古镇特色午餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">13:30</span>
-                    <span class="content-label">前往兴坪古镇汽车站</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">14:00</span>
-                    <span class="content-label">乘坐汽车返回桂林（车程约1.5小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">15:30</span>
-                    <span class="content-label">抵达桂林，办理酒店入住</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">16:00</span>
-                    <span class="content-label">自由活动（可逛两江四湖周边）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">18:00</span>
-                    <span class="content-label">酒店附近晚餐</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">19:00</span>
-                    <span class="content-label">休息，整理行李</span>
-                </li>
-            </ul>
-            <div class="accommodation">
-                <strong>住宿：</strong>桂林漓江云端酒店(桂林两江四湖象鼻山店)
-            </div>
-        </div>
+    <!-- 2月9日 周一 阳朔→兴坪 | 细化遇龙河漂流段数/兴坪古镇游玩 -->
+    <div class="day-card">
+        <div class="day-header">2月9日 周一 | 阳朔 → 兴坪 <span class="weather">天气：阴转小雨 10-18℃ | 漂流需穿防滑鞋</span></div>
+        <ul class="trip-list">
+            <li>08:00-08:30 酒店早餐：民宿含早，可加购桂林特色油茶</li>
+            <li>08:30-09:00 前往漂流点：阳朔西街 → 遇龙河金龙桥码头<span class="traffic">交通：约车前往，车程约30分钟，费用约40元</span></li>
+            <li><span class="tip">09:00-11:30</span> 遇龙河漂流：金龙桥→旧县段<span class="tip">游玩重点：网红竹筏漂流，打卡遇龙河山水，全程约16个坝坎，记得穿雨衣</span></li>
+            <li>11:30-12:00 漂流结束：旧县码头下筏，前往附近餐厅午餐</li>
+            <li>12:00-13:00 午餐：遇龙河周边农家菜<span class="food">美食：遇龙河清水鱼、农家小炒肉，人均40-50元</span></li>
+            <li>13:00-13:30 前往兴坪：遇龙河 → 兴坪古镇<span class="traffic">交通：约车前往，车程约40分钟，费用约60元，沿途欣赏漓江风光</span></li>
+            <li>13:30-14:00 办理入住：千峰里酒店(兴坪古镇20元背景风景区店)<span class="hotel">住宿：步行至20元背景观景台约5分钟，推窗见山</span></li>
+            <li>14:00-17:00 午后休整：酒店休息，避开午后小雨，可在酒店品茶赏景</li>
+            <li><span class="night-time">17:30-19:00</span> 逛兴坪古镇：打卡古镇老街、兴坪古戏台、漓江渡口<span class="tip">贴士：傍晚古镇人少，适合拍照，江边风大注意添衣</span></li>
+            <li><span class="night-time">19:00-20:00</span> 晚餐：兴坪古镇内本地小馆<span class="food">美食：兴坪松花糖、漓江鱼丸汤、桂林卤粉，人均30-40元</span></li>
+            <li><span class="night-time">20:00后</span> 休整：返回酒店休息，古镇晚间无过多娱乐，适合养精蓄锐</li>
+        </ul>
+    </div>
 
-        <!-- 2月11日行程 -->
-        <div class="day-card">
-            <div class="day-title">
-                2月11日 周三（桂林→成都）
-                <span class="weather-tag">桂林：阴 14℃；成都：多云 11℃</span>
-            </div>
-            <ul class="schedule-list">
-                <li class="schedule-item">
-                    <span class="time-label">04:30</span>
-                    <span class="content-label">起床整理</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">05:00</span>
-                    <span class="content-label">酒店出发前往桂林两江机场T2（车程约1小时）</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">06:00</span>
-                    <span class="content-label">办理登机手续+安检</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">07:05</span>
-                    <span class="content-label">乘坐GT1093航班起飞</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">08:50</span>
-                    <span class="content-label">抵达成都天府机场T2</span>
-                </li>
-                <li class="schedule-item">
-                    <span class="time-label">09:30</span>
-                    <span class="content-label">机场返程，结束行程</span>
-                </li>
-            </ul>
-            <div class="accommodation">
-                <strong>住宿：</strong>无（返程）
-            </div>
-        </div>
+    <!-- 2月10日 周二 兴坪→桂林 | 细化20元打卡/返程/两江四湖游玩 -->
+    <div class="day-card">
+        <div class="day-header">2月10日 周二 | 兴坪 → 桂林 <span class="weather">天气：阴转小雨 11-17℃ | 市区雨势较轻</span></div>
+        <ul class="trip-list">
+            <li>08:00-08:30 酒店早餐：民宿含早，可打包零食供返程路上吃</li>
+            <li>08:30-10:30 游览兴坪：打卡20元人民币背景观景台、兴坪渔村、漓江相公山远景<span class="tip">贴士：20元观景台可扫码拍照，记得带20元现金打卡合影</span></li>
+            <li>10:30-12:00 古镇闲逛：兴坪古镇采购伴手礼（桂花糕、罗汉果）<span class="tip">贴士：伴手礼建议在古镇老街店铺购买，性价比高</span></li>
+            <li>12:00-13:00 午餐：兴坪古镇核心区特色餐厅<span class="food">美食：漓江啤酒鱼、笋干炒腊肉，人均45-55元</span></li>
+            <li>13:00-13:20 前往车站：兴坪古镇 → 兴坪汽车站<span class="traffic">交通：步行约10分钟，或古镇内共享单车</span></li>
+            <li>13:30-15:30 返程桂林：兴坪汽车站 → 桂林汽车南站<span class="traffic">交通：直达大巴，票价约25元/人，车程约2小时，整点发车</span></li>
+            <li>15:30-16:10 前往酒店：桂林汽车南站 → 桂林漓江云端酒店<span class="traffic">交通：滴滴/出租车，车程约20分钟，费用约20元</span></li>
+            <li>16:10-16:40 办理入住：桂林漓江云端酒店(两江四湖象鼻山店)<span class="hotel">住宿：步行至两江四湖、象鼻山约10分钟，江景房视野佳</span></li>
+            <li>16:40-19:00 市区休整：酒店休息/逛桂林市中心正阳步行街</li>
+            <li><span class="night-time">19:00-19:30</span> 晚餐：正阳步行街附近尝桂林特色<span class="food">美食：椿记烧鹅、桂林田螺煲、恭城油茶，人均60-70元</span></li>
+            <li><span class="night-time">19:30-21:30</span> 逛两江四湖：步行游览榕杉湖、日月双塔、玻璃桥<span class="tip">贴士：雨天游船停航，步行游览即可，日月双塔亮灯至22:00</span></li>
+            <li><span class="night-time">21:30后</span> 休整：返回酒店，整理行李（次日早班机，提前打包好）</li>
+        </ul>
+    </div>
+
+    <!-- 2月11日 周三 桂林→成都 | 细化早班机全流程，避免误机 -->
+    <div class="day-card">
+        <div class="day-header">2月11日 周三 | 桂林 → 成都 <span class="weather">天气：阴转小雨 10-15℃ | 早间气温低，注意保暖</span></div>
+        <ul class="trip-list">
+            <li><span class="night-time">05:00</span> 起床整理：起床洗漱，检查随身行李/证件（身份证、机票）<span class="tip">贴士：早班机机场人少，可轻装前往，酒店可提前预约打包早餐</span></li>
+            <li><span class="night-time">05:20</span> 酒店出发：桂林漓江云端酒店 → 桂林两江机场T2<span class="traffic">交通：提前预约网约车，车程约40分钟，费用约60元，雨天提前出发</span></li>
+            <li><span class="night-time">06:00-06:30</span> 机场值机：桂林两江机场T2办理值机、托运行李<span class="flight">贴士：GT1093航班建议在2号值机柜台办理</span></li>
+            <li><span class="night-time">06:30-06:50</span> 安检登机：完成安检，前往登机口等候（登机口提前15分钟关闭）</li>
+            <li><span class="flight">07:05-08:50</span> 航班飞行：桂林两江机场T2 → 成都天府机场T2（航班号：GT1093）</li>
+            <li>08:50-09:20 抵达成都：天府机场T2下机，取行李（若有托运）</li>
+            <li>09:20后 行程结束：根据自身情况前往成都市区/家中，本次桂林阳朔五日游圆满结束</li>
+        </ul>
+    </div>
+
+    <!-- 底部综合贴士，贴合实际出行需求 -->
+    <div class="footer">
+        本计划专属手机端浏览 | 全程阴转小雨，建议携带折叠伞/一次性雨衣、防滑运动鞋<br>
+        桂林/阳朔/兴坪车程多为盘山公路，易晕车者建议备晕车药 | 本地口味偏酸辣，可提前告知店家少辣
     </div>
 </body>
 </html>
